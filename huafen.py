@@ -1,6 +1,6 @@
 import os
-import shutil
 import random
+import shutil
 
 # 路径配置
 new_images_dir = r"F:/new_picture"
@@ -12,19 +12,21 @@ val_images_dir = r"D:/computer/ultralytics/Data_G/val/images"
 val_labels_dir = r"D:/computer/ultralytics/Data_G/val/labels"
 
 # 获取所有图片文件
-images = [f for f in os.listdir(new_images_dir) if f.lower().endswith(('.jpg', '.png', '.jpeg'))]
+images = [f for f in os.listdir(new_images_dir) if f.lower().endswith((".jpg", ".png", ".jpeg"))]
 images.sort()
 
 # 随机挑 2 张做 val
 val_samples = set(random.sample(images, 2))
 
+
 # 移动文件函数
 def move_files(file_list, src_img_dir, src_lbl_dir, dst_img_dir, dst_lbl_dir):
     for img_file in file_list:
-        label_file = os.path.splitext(img_file)[0] + '.txt'
+        label_file = os.path.splitext(img_file)[0] + ".txt"
         shutil.move(os.path.join(src_img_dir, img_file), os.path.join(dst_img_dir, img_file))
         shutil.move(os.path.join(src_lbl_dir, label_file), os.path.join(dst_lbl_dir, label_file))
         print(f"Moved: {img_file}, {label_file}")
+
 
 # 移动到 val
 move_files(val_samples, new_images_dir, new_labels_dir, val_images_dir, val_labels_dir)
