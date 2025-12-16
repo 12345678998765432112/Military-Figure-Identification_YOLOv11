@@ -1,5 +1,6 @@
 from ultralytics import YOLO
 
+
 def main():
     # 加载训练好的 best 权重
     model = YOLO("runsG3/yolov11_custom/weights/best.pt")
@@ -9,7 +10,7 @@ def main():
         data="D:/computer/ultralytics/Data_G/data.yaml",  # 确保 data.yaml 里写了 test 路径
         split="test",  # 显式使用 test 数据
         save_json=True,  # 可选：保存 COCO 格式结果
-        save_hybrid=True  # 可选：保存混合推理结果
+        save_hybrid=True,  # 可选：保存混合推理结果
     )
 
     # 打印主要指标
