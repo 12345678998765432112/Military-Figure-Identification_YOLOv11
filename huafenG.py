@@ -1,6 +1,6 @@
 import os
-import shutil
 import random
+import shutil
 
 # 原始路径
 img_src = r"D:/computer/robocom2025/full_data/images"
@@ -35,6 +35,7 @@ train_imgs = all_imgs[:train_end]
 val_imgs = all_imgs[train_end:val_end]
 test_imgs = all_imgs[val_end:]
 
+
 def copy_files(img_list, img_dst, label_dst):
     for img_name in img_list:
         img_path = os.path.join(img_src, img_name)
@@ -49,6 +50,7 @@ def copy_files(img_list, img_dst, label_dst):
             shutil.copy(label_path, os.path.join(label_dst, label_name))
         else:
             print(f"⚠️ Warning: Label not found for image {img_name}")
+
 
 # 执行复制
 copy_files(train_imgs, train_img_dst, train_label_dst)
