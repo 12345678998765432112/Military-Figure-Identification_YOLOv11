@@ -13,7 +13,7 @@ for label_file in os.listdir(label_dir):
         label_path = os.path.join(label_dir, label_file)
 
         # 读取标签文件
-        with open(label_path, "r") as f:
+        with open(label_path) as f:
             lines = f.readlines()
 
         # 更新标签文件中的类号
